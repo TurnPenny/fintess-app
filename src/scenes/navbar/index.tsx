@@ -5,6 +5,7 @@ import Link from './Link';
 import { pageEnum } from '@/shared/types';
 import useMediaQuery from '@/hooks/useMediaQuery';
 import { useState } from 'react';
+import ActionButton from '@/shared/ActionButton';
 
 type Props = {
   selectedPage: pageEnum;
@@ -44,15 +45,17 @@ const Navbar = ({ selectedPage, setSelectedPage }: Props) => {
 
                 <div className={`${flexBetween} gap-8`}>
                   <p>Sign up</p>
-                  <button>Become a member</button>
+                  <ActionButton setSelectedPage={setSelectedPage}>
+                    Become a member
+                  </ActionButton>
                 </div>
               </div>
             ) : (
               <button
-                className='rounded-full bg-secondary-500 p2'
+                className='rounded-full bg-secondary-500 p-2'
                 onClick={() => setToggleMenu(!toggleMenu)}
               >
-                <Bars3Icon className='h-6 w-6 text-white' />
+                <Bars3Icon className='h-6 w-6  text-white' />
               </button>
             )}
 
