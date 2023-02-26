@@ -8,11 +8,12 @@ import { useState } from 'react';
 import ActionButton from '@/shared/ActionButton';
 
 type Props = {
+  isTopOfpage: boolean;
   selectedPage: pageEnum;
   setSelectedPage: (value: pageEnum) => void;
 };
 
-const Navbar = ({ selectedPage, setSelectedPage }: Props) => {
+const Navbar = ({ selectedPage, setSelectedPage, isTopOfpage }: Props) => {
   const links = ['Home', 'Benefits', 'Our classes', 'Contact Us'];
 
   const buildMenu = (links: string[]) => {
@@ -28,10 +29,14 @@ const Navbar = ({ selectedPage, setSelectedPage }: Props) => {
   const [toggleMenu, setToggleMenu] = useState<boolean>(false);
   const flexBetween = 'flex items-center justify-between';
   const isAboveMediumScreens = useMediaQuery('(min-width: 1060px');
+  const navBackGround = isTopOfpage ? '' : 'bg-primary-100 drop-shadow';
+  console.log(isTopOfpage);
 
   return (
     <React.Fragment>
-      <div className={`${flexBetween} fixed top-0 z-30 w-full py-6`}>
+      <div
+        className={`${navBackGround} ${flexBetween} fixed top-0 z-30 w-full py-6`}
+      >
         <div className={`${flexBetween} mx-auto w-5/6`}>
           <div className={`${flexBetween} w-full gap-16`}>
             <img src={Logo} alt='logo' />
@@ -63,6 +68,20 @@ const Navbar = ({ selectedPage, setSelectedPage }: Props) => {
           </div>
         </div>
       </div>
+      {/* Mobile menu modal */}
+      {!isAboveMediumScreens && toggleMenu && (
+        <div className='fixed right-0 bottom-0 z-40 h-full w-[300px] bg-primary-100 drop-shadow-xl'>
+          <div className='flex justify-end p-12'>
+            <button onClick={() => setToggleMenu(!toggleMenu)}>
+              <XMarkIcon className='w-6 h-6 text-gray-400' />
+            </button>
+          </div>
+          <div className=' flex flex-col gap-10 text-2xl text-center'>
+            {buildMenu(links)}
+          </div>
+        </div>
+      )}
+      {/* Mobile menu modal */}
     </React.Fragment>
   );
 };
