@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
-import Navbar from './scenes/navbar';
+import Home from './scenes/Home';
+import Navbar from './scenes/Navbar';
 import { pageEnum } from './shared/types';
 
 function App() {
@@ -27,6 +28,7 @@ function App() {
         selectedPage={selectedPage}
         setSelectedPage={setselectedPage}
       />
+      <Home setSelectedPage={setselectedPage} />
     </div>
   );
 }
