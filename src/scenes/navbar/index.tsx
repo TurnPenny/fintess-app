@@ -19,6 +19,7 @@ const Navbar = ({ selectedPage, setSelectedPage, isTopOfpage }: Props) => {
   const buildMenu = (links: string[]) => {
     return links.map((item: string) => (
       <Link
+        key={item + Math.random()}
         page={item}
         selectedPage={selectedPage}
         setSelectedPage={setSelectedPage}
