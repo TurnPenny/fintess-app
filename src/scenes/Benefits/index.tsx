@@ -7,9 +7,10 @@ import { BenefitType, pageEnum } from '@/shared/types';
 import { motion } from 'framer-motion';
 import Htext from '@/shared/Htext';
 import BenefitCard from './BenefitCard';
+import BenefitDescription from './BenefitDescription';
 
 type Props = {
-  setSelectedPage: (value: pageEnum.Benefits) => void;
+  setSelectedPage: (value: pageEnum) => void;
 };
 
 const container = {
@@ -83,6 +84,7 @@ const Benefits = ({ setSelectedPage }: Props) => {
             )
           )}
         </motion.div>
+        <BenefitDescription setSelectedPage={setSelectedPage} />
       </motion.div>
     </section>
   );
