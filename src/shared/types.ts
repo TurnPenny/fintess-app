@@ -11,3 +11,9 @@ export interface BenefitType {
   description: string;
   setSelectedPage?: (value: pageEnum) => void;
 }
+
+export interface ClassType {
+  name: string;
+  description?: string;
+  image: string;
+}
