@@ -43,7 +43,7 @@ const benefits: Array<BenefitType> = [
 
 const Benefits = ({ setSelectedPage }: Props) => {
   return (
-    <section id='benefits' className='mx-auto min-h-full w-5/6 py-20'>
+    <motion.div id='benefits' className='mx-auto min-h-full w-5/6 py-20'>
       <motion.div onViewportEnter={() => setSelectedPage(pageEnum.Benefits)}>
         {/* header */}
         <motion.div
@@ -86,7 +86,7 @@ const Benefits = ({ setSelectedPage }: Props) => {
         </motion.div>
         <BenefitDescription setSelectedPage={setSelectedPage} />
       </motion.div>
-    </section>
+    </motion.div>
   );
 };
 
